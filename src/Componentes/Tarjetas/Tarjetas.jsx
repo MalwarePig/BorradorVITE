@@ -1,26 +1,28 @@
 import { useEffect, useState } from 'react'
-import { data } from '../../Data/Servidor'
 
-export function Tarjetas() {
-  const [tareaUS, setTareaUS] = useState([])
+export function Tarjetas({Personas}) {
+  
 
-  useEffect(() => {
-    setTareaUS(data)
-  })
-
-  if(data.length === 0 ){
+  if(Personas.length === 0 ){
     return (
         <h1>Sin datos</h1>
     )
   }
+
+  function eliminar(params) {
+    alert("Borrando: "+params)
+  }
   return <div id='Maestros'>
         {
-            data.map((Persona)=>(
-                <div key={Persona.Nombre}>
+            Personas.map((Persona)=>(
+                <div key={Persona.id} id={Persona.id}>
                      <h4>{Persona.Nombre}</h4>
                      <h4>{Persona.Edad}</h4>
+                     <button onClick={()=>eliminar("ss")}>Eliminar</button>
                 </div>
             ))
         }
   </div>
 }
+
+
