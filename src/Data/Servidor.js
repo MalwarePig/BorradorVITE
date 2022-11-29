@@ -4,7 +4,7 @@
      id:0
  },
  {
-    Nombre: "Valeria",
+    Nombre: "Osvaldo",
     Edad: 28,
     id:1
 }

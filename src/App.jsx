@@ -1,30 +1,16 @@
-import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import { Formulario } from './Componentes/Formularios/Formulario'
 import { Tarjetas } from './Componentes/Tarjetas/Tarjetas'
-import { data } from './Data/Servidor'
 
 export function App() {
-  const [dataPersonas, setdataPersonas] = useState([]);
 
-  useEffect(() => {
-    setdataPersonas(data)
-  }, []);
+  return (<main className='bg-gray-900 h-screen text-white'>
+    <div className='container mx-auto'>
+      <Formulario />
+      <Tarjetas />
+    </div>
 
-  function addPerson(nombreUS, edadUS) {
-    const Persona = {
-      Nombre: nombreUS,
-      Edad: edadUS,
-      id: dataPersonas.length
-    }
-    setdataPersonas([...dataPersonas, Persona])
-  }
-
-
-  return (<>
-    <Formulario addPerson={addPerson} />
-    <Tarjetas Personas={dataPersonas} />
-  </>)
+  </main>)
 }
 
 
