@@ -1,27 +1,26 @@
-import { createContext } from "react";
-import { data } from '../Data/Servidor'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, createContext } from 'react'
+import { loadData } from '../Data/Servidor'
 
 export const PersonaContext = createContext();//es el nombre del contexto
 
 export function PersonaContextProvider(props) {//es el proveedor
-    const [dataPersonas, setdataPersonas] = useState(data);
+    const [dataPersonas, setdataPersonas] = useState(loadData());
 
     useEffect(() => {
-        setdataPersonas(data) 
-    }, []);
- 
+        
+       console.log("Effect ")
+       console.log(dataPersonas)
+    },[]);
+
     function addPerson(nombreUS, edadUS) {
         const Persona = {
             Nombre: nombreUS,
             Edad: edadUS,
             id: dataPersonas.length
         }
-
         console.log(Persona)
+        console.log(dataPersonas)
         setdataPersonas([...dataPersonas, Persona])
-        
-        console.log("final")
         console.log(dataPersonas)
     }
 
@@ -31,6 +30,8 @@ export function PersonaContextProvider(props) {//es el proveedor
         console.log(dataPersonas.filter(persona => persona.id !== id))
         setdataPersonas(dataPersonas.filter(persona => persona.id !== id))
     }
+
+
 
     return (
         <PersonaContext.Provider value={{

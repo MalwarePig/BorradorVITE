@@ -7,9 +7,12 @@ export function Tarjetas() {
 
   const [personasUS, setPersonasUS] = useState([])
 
+
   useEffect(() => {
     setPersonasUS(data)
-  })
+  }, [personasUS,data])
+
+
 
   if (personasUS.length === 0) {
     return (
@@ -29,7 +32,6 @@ export function Tarjetas() {
           <h4 className='text-gray-400 text-sm'>{Persona.Edad}</h4>
           <button onClick={() => eliminar(Persona.id)} className='bg-red-800 px-2 py-1 rounded-md mt-4 hover:bg-red-600'>Eliminar</button>
         </div>
-
       ))
     }
   </div>
